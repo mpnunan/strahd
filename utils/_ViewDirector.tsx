@@ -4,11 +4,7 @@ import Loading from '@/components/Loading';
 import Signin from '@/components/Signin';
 import NavHeader from '@/components/NavHeader';
 
-export default function ViewDirectorBasedOnUserAuthStatus({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProps }: any) => {
   const { user, userLoading }: any = useAuth();
 
   // if user state is null, then show loader
@@ -22,7 +18,7 @@ export default function ViewDirectorBasedOnUserAuthStatus({
       <>
         <NavHeader /> {/* NavBar only visible if user is logged in and is in every view */}
         <div className="container">
-          {children}
+          <Component {...pageProps} />
         </div>
       </>
     );
@@ -30,6 +26,8 @@ export default function ViewDirectorBasedOnUserAuthStatus({
 
   return <Signin />;
 };
+
+export default ViewDirectorBasedOnUserAuthStatus;
 
 ViewDirectorBasedOnUserAuthStatus.propTypes = {
   component: PropTypes.func.isRequired,
