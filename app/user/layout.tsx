@@ -1,29 +1,22 @@
-import Loading from "@/components/Loading";
-import NavHeader from "@/components/NavHeader";
-import Signin from "@/components/Signin";
-import { AuthProvider, useAuth } from "@/utils/context/AuthContext";
+/* eslint-disable react/prop-types */
+'use client'
+import { AuthProvider } from '@/utils/context/AuthContext';
+import ViewDirectorBasedOnUserAuthStatus from '@/utils/ViewDirector';
 
-export default function UserLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const { user, userLoading }: any = useAuth();
-
-  // if user state is null, then show loader
- return (
-  <AuthProvider>
-    {userLoading ? <Loading /> : null}
-    {user ? (
-        <>
-          <NavHeader />
-          <div className="container">
-            {children}
-          </div>
-        </>
-      ) : null
-    }
-    {!userLoading && !user ? <Signin /> : null}
- </AuthProvider>
- )
+function MyApp({ Component, pageProps }: any) {
+  return (
+    <AuthProvider>
+      {' '}
+      {/* gives children components access to user and auth methods */}
+      <ViewDirectorBasedOnUserAuthStatus
+        // if status is pending === loading
+        // if status is logged in === view app
+        // if status is logged out === sign in page
+        component={Component}
+        pageProps={pageProps}
+      />
+    </AuthProvider>
+  );
 }
+
+export default MyApp;

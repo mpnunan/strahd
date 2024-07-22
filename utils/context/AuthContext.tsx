@@ -22,7 +22,7 @@ const AuthProvider = (props: any) => {
   // an object/value = user is logged in
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser: any | undefined) => {
+    firebase.auth().onAuthStateChanged((fbUser: any) => {
       if (fbUser) {
         setUser(fbUser);
       } else {
