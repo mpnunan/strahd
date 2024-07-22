@@ -13,7 +13,7 @@ const AuthContext = createContext();
 
 AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName string property. React DevTools uses this string to determine what to display for the context. https://reactjs.org/docs/context.html#contextdisplayname
 
-const AuthProvider = (props: any) => {
+function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
   // there are 3 states for the user:
@@ -22,11 +22,11 @@ const AuthProvider = (props: any) => {
   // an object/value = user is logged in
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser: any) => {
+    firebase.auth().onAuthStateChanged(function (fbUser) {
       if (fbUser) {
         setUser(fbUser);
       } else {
-        setUser(null);
+        setUser(false);
       }
     }); // creates a single global listener for auth state changed
   }, []);
