@@ -3,7 +3,7 @@
 import { AuthProvider } from '@/utils/context/AuthContext';
 import ViewDirectorBasedOnUserAuthStatus from '@/utils/ViewDirector';
 
-function MyApp({ Component, pageProps }: any) {
+function Home({ Component, pageProps }: any): any {
   return (
     <AuthProvider>
       {' '}
@@ -19,4 +19,4 @@ function MyApp({ Component, pageProps }: any) {
   );
 }
 
-export default MyApp;
+export default Home;

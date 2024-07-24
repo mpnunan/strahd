@@ -1,5 +1,5 @@
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
-
+'use client'
 import React, {
   createContext,
   useContext,
@@ -14,7 +14,7 @@ const AuthContext = createContext();
 AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName string property. React DevTools uses this string to determine what to display for the context. https://reactjs.org/docs/context.html#contextdisplayname
 
 function AuthProvider(props) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded

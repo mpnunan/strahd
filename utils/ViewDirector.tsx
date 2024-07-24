@@ -1,10 +1,12 @@
+'use client'
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useAuth } from './context/AuthContext';
 import Loading from '@/components/Loading';
-import Signin from '@/components/Signin';
 import NavHeader from '@/components/NavHeader';
+import Signin from '@/components/Signin';
 
-const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProps }: any) => {
+export default function ViewDirectorBasedOnUserAuthStatus({ component: Component, pageProps}: any) {
   const { user, userLoading }: any = useAuth();
 
   // if user state is null, then show loader
@@ -26,8 +28,6 @@ const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProp
 
   return <Signin />;
 };
-
-export default ViewDirectorBasedOnUserAuthStatus;
 
 ViewDirectorBasedOnUserAuthStatus.propTypes = {
   component: PropTypes.func.isRequired,
