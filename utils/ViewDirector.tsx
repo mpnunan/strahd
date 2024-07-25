@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useAuth } from '@/utils/context/AuthContext';
 import Loading from '@/components/Loading';
 import NavHeader from '@/components/NavHeader';
