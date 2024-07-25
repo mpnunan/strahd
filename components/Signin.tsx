@@ -1,8 +1,9 @@
+'use client'
 import React from 'react';
 import { Button } from '@mui/material';
-import { signIn } from '../utils/auth';
+import { signIn } from '@/utils/auth';
 
-function Signin() {
+export default function Signin() {
   return (
     <div
       style={{
@@ -20,5 +21,3 @@ function Signin() {
     </div>
   );
 }
-
-export default Signin;

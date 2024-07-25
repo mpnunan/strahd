@@ -1,10 +1,16 @@
+'use client'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from '@/utils/context/AuthContext';
 import Loading from '@/components/Loading';
-import Signin from '@/components/Signin';
 import NavHeader from '@/components/NavHeader';
+import Signin from '@/components/Signin';
 
-const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProps }: any) => {
+export default function ViewDirectorBasedOnUserAuthStatus({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const { user, userLoading }: any = useAuth();
 
   // if user state is null, then show loader
@@ -18,18 +24,11 @@ const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProp
       <>
         <NavHeader /> {/* NavBar only visible if user is logged in and is in every view */}
         <div className="container">
-          <Component {...pageProps} />
+          {children}
         </div>
       </>
     );
   }
 
   return <Signin />;
-};
-
-export default ViewDirectorBasedOnUserAuthStatus;
-
-ViewDirectorBasedOnUserAuthStatus.propTypes = {
-  component: PropTypes.func.isRequired,
-  pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };

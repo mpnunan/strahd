@@ -1,22 +1,18 @@
-/* eslint-disable react/prop-types */
-'use client'
 import { AuthProvider } from '@/utils/context/AuthContext';
 import ViewDirectorBasedOnUserAuthStatus from '@/utils/ViewDirector';
 
-function MyApp({ Component, pageProps }: any) {
+function UserLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <AuthProvider>
       {' '}
       {/* gives children components access to user and auth methods */}
-      <ViewDirectorBasedOnUserAuthStatus
-        // if status is pending === loading
-        // if status is logged in === view app
-        // if status is logged out === sign in page
-        component={Component}
-        pageProps={pageProps}
-      />
+      <ViewDirectorBasedOnUserAuthStatus>{children}</ViewDirectorBasedOnUserAuthStatus>
     </AuthProvider>
   );
 }
 
-export default MyApp;
+export default UserLayout;
