@@ -1,9 +1,9 @@
 'use client'
 import React from 'react';
 import { useAuth } from '@/utils/context/AuthContext';
-import Loading from '@/components/Loading';
-import NavHeader from '@/components/NavHeader';
-import Signin from '@/components/Signin';
+import Loading from '@/components/auth/Loading';
+import NavHeader from '@/components/auth/NavHeader';
+import Signin from '@/components/auth/Signin';
 
 export default function ViewDirectorBasedOnUserAuthStatus({
   children,

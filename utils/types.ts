@@ -1,0 +1,31 @@
+type Npc = {
+  id: string;
+  name: string;
+  details: string;
+}
+
+type Player = {
+  id: string;
+  name: string;
+  metaName: string;
+}
+
+type MapLocation = {
+  id: string;
+  name: string;
+  npcs: Array<string>;
+}
+
+type Session = {
+  id: string;
+  session: number;
+  date: string;
+  summary: string;
+  mapLocations: Array<string>;
+  npcs: Array<Npc>
+}
+
+type Npcs =  Array<Npc>
+type Players = Array<Player>;
+type MapLocations =  Array<MapLocation>;
+type Sessions = Array<Session>
