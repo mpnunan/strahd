@@ -4,7 +4,8 @@ import type {
   Npcs,
   MapLocations,
   Players,
-  Session, 
+  Session,
+  Player
 } from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
@@ -22,9 +23,9 @@ const getMapLocations = async (): Promise<MapLocations> => {
   return Object.values(mapLocations.data);
 }
 
-const getCharacters = async (): Promise<Players> => {
-  const characters = await data.get('/characters.json');
-  return Object.values(characters.data);
+const getPlayers = async (): Promise<Players> => {
+  const players = await data.get('/players.json');
+  return Object.values(players.data);
 }
 
 const createSession = async (payload: Session): Promise<any> => {
@@ -37,11 +38,17 @@ const getSingleSession = async (id: string| null): Promise<Session> => {
   return singleSession.data;
 }
 
+const getSinglePlayer = async (id: string| null): Promise<Player> => {
+  const singlePlayer = await data.get(`/players/${id}.json`);
+  return singlePlayer.data;
+}
+
 export {
   getSessions,
   getNpcs,
   getMapLocations,
-  getCharacters,
+  getPlayers,
   createSession,
   getSingleSession,
+  getSinglePlayer
 }

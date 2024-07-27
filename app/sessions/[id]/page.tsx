@@ -11,10 +11,9 @@ export default function SingleSession({ params }: { params: { id: string } }) {
   const [session, setSession] = React.useState<Session>();
 
   React.useEffect(() => {
-    console.warn(sessionId);
-  getSingleSession(sessionId).then((data) => {
-    setSession(data);
-  })
+    getSingleSession(sessionId).then((data) => {
+      setSession(data);
+    })
   }, [sessionId])
   
   return (
