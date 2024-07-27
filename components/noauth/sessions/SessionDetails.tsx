@@ -19,7 +19,7 @@ export default function SessionDetails({
 }: SessionObj) {
   return (
     <div>
-        <h1>{`Session ${session}`}</h1>
+        <h1>{session ? `Session ${session}` : null}</h1>
         <h2>{date}</h2>
         <div>
         <SessionSummary

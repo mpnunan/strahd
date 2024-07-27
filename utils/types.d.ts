@@ -2,12 +2,15 @@ type Npc = {
   id: string;
   name: string;
   details: string;
+  alive: boolean;
+  reachable: boolean;
 }
 
 type Player = {
   id: string;
   name: string;
   metaName: string;
+  alive: boolean;
 }
 
 type MapLocation = {

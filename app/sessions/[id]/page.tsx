@@ -1,6 +1,5 @@
 'use client'
 import { getSingleSession } from "@/utils/data";
-import { useSearchParams } from "next/navigation";
 import type { Session } from "@/utils/types";
 import React from "react";
 import SessionDetails from "@/components/noauth/sessions/SessionDetails";
