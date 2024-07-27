@@ -1,4 +1,11 @@
 import data from "./axiosConfig"
+import type {
+  Sessions,
+  Npcs,
+  MapLocations,
+  Players,
+  Session, 
+} from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
   const sessions = await data.get('/sessions.json');
@@ -25,7 +32,7 @@ const createSession = async (payload: Session): Promise<any> => {
   return session.data;
 }
 
-const getSingleSession = async (id: string| undefined): Promise<Session> => {
+const getSingleSession = async (id: string| null): Promise<Session> => {
   const singleSession = await data.get(`/sessions/${id}.json`);
   return singleSession.data;
 }

@@ -22,10 +22,21 @@ type Session = {
   date: string;
   summary: string;
   mapLocations: Array<string>;
-  npcs: Array<Npc>
+  npcs: Array<string>
 }
 
 type Npcs =  Array<Npc>
 type Players = Array<Player>;
 type MapLocations =  Array<MapLocation>;
 type Sessions = Array<Session>
+
+export type {
+  Npc,
+  Player,
+  MapLocation,
+  Session,
+  Npcs,
+  Players,
+  MapLocations,
+  Sessions,
+}
