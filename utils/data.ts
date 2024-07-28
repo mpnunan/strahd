@@ -8,6 +8,8 @@ import type {
   Player,
   SessionMapLocations,
   SessionNpcs,
+  MapLocation,
+  Npc,
 } from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
@@ -55,7 +57,15 @@ const getSessionNpcs = async (sessionId: string): Promise<SessionNpcs> => {
   return Object.values(npcs.data);
 }
 
+const getSingleMapLocation = async (id: string| null): Promise<MapLocation> => {
+  const singleMapLocation = await data.get(`/mapLocations/${id}.json`);
+  return singleMapLocation.data;
+}
 
+const getSingleNpc = async (id: string| null): Promise<Npc> => {
+  const singleNpc = await data.get(`/npcs/${id}.json`);
+  return singleNpc.data;
+}
 
 export {
   getSessions,
@@ -67,4 +77,6 @@ export {
   getSinglePlayer,
   getSessionMapLocations,
   getSessionNpcs,
+  getSingleMapLocation,
+  getSingleNpc,
 }
