@@ -19,9 +19,11 @@ export default function SinglePlayer({ params }: { params: { id: string } }) {
   return (
     <div>
       <PlayerDetails
+        id={player?.id}
         name={player?.name}
         metaName={player?.metaName}
         alive={player?.alive}
+        bio={player?.id}
       />
     </div>
   )

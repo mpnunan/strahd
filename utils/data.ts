@@ -5,7 +5,9 @@ import type {
   MapLocations,
   Players,
   Session,
-  Player
+  Player,
+  SessionMapLocations,
+  SessionNpcs,
 } from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
@@ -43,6 +45,18 @@ const getSinglePlayer = async (id: string| null): Promise<Player> => {
   return singlePlayer.data;
 }
 
+const getSessionMapLocations = async (sessionId: string): Promise<SessionMapLocations> => {
+  const mapLocations = await data.get(`/sessionLocations.json?orderBy="sessionId"&equalTo="${sessionId}"`);
+  return Object.values(mapLocations.data);
+}
+
+const getSessionNpcs = async (sessionId: string): Promise<SessionNpcs> => {
+  const npcs = await data.get(`/sessionNpcs.json?orderBy="sessionId"&equalTo="${sessionId}"`);
+  return Object.values(npcs.data);
+}
+
+
+
 export {
   getSessions,
   getNpcs,
@@ -50,5 +64,7 @@ export {
   getPlayers,
   createSession,
   getSingleSession,
-  getSinglePlayer
+  getSinglePlayer,
+  getSessionMapLocations,
+  getSessionNpcs,
 }

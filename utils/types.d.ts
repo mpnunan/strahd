@@ -11,12 +11,13 @@ type Player = {
   name: string;
   metaName: string;
   alive: boolean;
+  bio: string;
 }
 
 type MapLocation = {
   id: string;
   name: string;
-  npcs: Array<string>;
+  details: string;
 }
 
 type Session = {
@@ -24,14 +25,46 @@ type Session = {
   session: number;
   date: string;
   summary: string;
-  mapLocations: Array<string>;
-  npcs: Array<string>
+}
+
+type JoinSession = {
+  date: string;
+  id: string;
+  session: number;
+}
+
+type JoinNpc = {
+  id: string;
+  name: string;
+}
+
+type JoinMapLocation = {
+  id: string;
+  name: string;
+}
+
+type SessionNpc = {
+  id: string;
+  sessionId: string;
+  session: JoinSession;
+  npc: JoinNpc;
+  npcId: string;
+}
+
+type SessionMapLocation = {
+  id: string;
+  sessionId: string;
+  session: JoinSession;
+  mapLocationId: string;
+  mapLocation: JoinMapLocation;
 }
 
 type Npcs =  Array<Npc>
 type Players = Array<Player>;
 type MapLocations =  Array<MapLocation>;
-type Sessions = Array<Session>
+type Sessions = Array<Session>;
+type SessionNpcs = Array<SessionNpc>;
+type SessionMapLocations = Array<SessionMapLocation>;
 
 export type {
   Npc,
@@ -42,4 +75,11 @@ export type {
   Players,
   MapLocations,
   Sessions,
+  JoinSession,
+  JoinNpc,
+  JoinSession,
+  SessionMapLocation,
+  SessionMapLocations,
+  SessionNpc,
+  SessionNpcs,
 }

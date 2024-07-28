@@ -23,8 +23,6 @@ export default function SingleSession({ params }: { params: { id: string } }) {
         session={session?.session}
         date={session?.date}
         summary={session?.summary}
-        mapLocations={session?.mapLocations}
-        npcs={session?.npcs}
       />
     </div>
   )

@@ -5,8 +5,6 @@ type SessionObj = {
   session: number | undefined;
   date: string | undefined;
   summary: string | undefined;
-  mapLocations: Array<string> | undefined;
-  npcs: Array<string> | undefined;
 }
 
 export default function SessionDetails({
@@ -14,8 +12,6 @@ export default function SessionDetails({
   session,
   date,
   summary,
-  mapLocations,
-  npcs,
 }: SessionObj) {
   return (
     <div>
