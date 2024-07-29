@@ -1,3 +1,5 @@
+import { UrlWithStringQuery } from "url";
+
 type Npc = {
   id: string;
   name: string;
@@ -66,6 +68,15 @@ type Sessions = Array<Session>;
 type SessionNpcs = Array<SessionNpc>;
 type SessionMapLocations = Array<SessionMapLocation>;
 
+type PlayerNote = {
+  id: string;
+  date: string;
+  note: string;
+  uid: string;
+}
+
+type PlayerNotes = Array<PlayerNote>;
+
 export type {
   Npc,
   Player,
@@ -82,4 +93,6 @@ export type {
   SessionMapLocations,
   SessionNpc,
   SessionNpcs,
+  PlayerNote,
+  PlayerNotes,
 }

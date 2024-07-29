@@ -10,6 +10,8 @@ import type {
   SessionNpcs,
   MapLocation,
   Npc,
+  PlayerNote,
+  PlayerNotes,
 } from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
@@ -67,6 +69,26 @@ const getSingleNpc = async (id: string| null): Promise<Npc> => {
   return singleNpc.data;
 }
 
+const createPlayerNote = async (note: PlayerNote): Promise<any> => {
+  const playerNote = await data.post('/playerNotes.json', note);
+  return playerNote.data;
+}
+
+const updatePlayerNote = async (note: PlayerNote): Promise<any> => {
+  const playerNote = await data.patch('/playerNotes.json', note);
+  return playerNote.data;
+}
+
+const getSinglePlayerNote = async (id: string): Promise<PlayerNote> => {
+  const playerNote = await data.get(`/playerNotes/${id}.json`);
+  return playerNote.data;
+}
+
+const getPlayerNotes = async (): Promise<PlayerNotes> => {
+  const playerNotes = await data.get('/playerNotes.json');
+  return Object.values(playerNotes.data);
+}
+
 export {
   getSessions,
   getNpcs,
@@ -79,4 +101,8 @@ export {
   getSessionNpcs,
   getSingleMapLocation,
   getSingleNpc,
+  createPlayerNote,
+  updatePlayerNote,
+  getSinglePlayerNote,
+  getPlayerNotes,
 }
