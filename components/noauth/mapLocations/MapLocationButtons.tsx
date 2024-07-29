@@ -16,14 +16,14 @@ export default function MapLocationsButtons({ sessionId }: {sessionId: string}) 
   }, [])
 
   return (
-    <ButtonGroup>
+    <ButtonGroup className="session-buttons-group session-buttons--mapLocations">
       {sessionMapLocations?.map((mapLocation) => (
         <Link
           key={`button-${mapLocation.mapLocationId}`}
           href={`/mapLocations/${mapLocation.mapLocationId}`}
           passHref
         >
-          <Button variant='outlined'>{mapLocation.mapLocation.name}</Button>
+          <Button variant='text'>{mapLocation.mapLocation.name}</Button>
         </Link>
       ))}
     </ButtonGroup>

@@ -17,13 +17,13 @@ export default function SinglePlayer({ params }: { params: { id: string } }) {
   }, [playerId])
   
   return (
-    <div>
+    <div className="details-page">
       <PlayerDetails
         id={player?.id}
         name={player?.name}
         metaName={player?.metaName}
         alive={player?.alive}
-        bio={player?.id}
+        bio={player?.bio}
       />
     </div>
   )

@@ -16,7 +16,7 @@ export default function SingleNpc({ params }: { params: { id: string } }) {
   }, [npcId])
   
   return (
-    <div>
+    <div className="details-page">
       <h1>{npc?.name}</h1>
       <h2>
         {npc?.reachable ? null : 'Deceased'}

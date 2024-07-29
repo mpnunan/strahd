@@ -17,7 +17,7 @@ export default function SingleSession({ params }: { params: { id: string } }) {
   }, [sessionId])
   
   return (
-    <div>
+    <div className="details-page">
       <SessionDetails
         id={session?.id}
         session={session?.session}

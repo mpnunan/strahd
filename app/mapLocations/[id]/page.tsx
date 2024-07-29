@@ -16,7 +16,7 @@ export default function SingleMapLocation({ params }: { params: { id: string } }
   }, [mapLocationId])
   
   return (
-    <div>
+    <div className="details-page">
       <h1>{mapLocation?.name}</h1>
       <div>
         <p>{mapLocation?.details}</p>

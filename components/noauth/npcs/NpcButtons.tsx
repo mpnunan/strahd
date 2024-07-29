@@ -16,14 +16,14 @@ export default function NpcsButtons({ sessionId }: {sessionId: string}) {
   }, [])
 
   return (
-    <ButtonGroup>
+    <ButtonGroup className="session-buttons-group session-buttons--npcs">
       {sessionNpcs?.map((npc) => (
         <Link
           key={`button-${npc.npcId}`}
           href={`/npcs/${npc.npcId}`}
           passHref
         >
-          <Button variant='outlined'>{npc.npc.name}</Button>
+          <Button variant='text'>{npc.npc.name}</Button>
         </Link>
       ))}
     </ButtonGroup>

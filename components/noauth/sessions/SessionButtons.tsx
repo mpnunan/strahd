@@ -3,7 +3,7 @@ import NpcsButtons from "../npcs/NpcButtons";
 
 export default function SessionButtons({ sessionId }: { sessionId: string }) {
   return (
-    <div>
+    <div className="session-buttons">
       <MapLocationsButtons sessionId={sessionId} />
       <NpcsButtons sessionId={sessionId} />
     </div>

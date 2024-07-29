@@ -31,7 +31,7 @@ export default function SessionDropdown({
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls={`Session ${session} content`}
+          aria-controls={`Session-${session}-content`}
           id={`sessionDrop-${id}`}
         >
           {`Session ${session}: ${date}`}
@@ -41,7 +41,7 @@ export default function SessionDropdown({
         </AccordionDetails>
         <AccordionActions>
           <Link href={`/sessions/${id}`} passHref >
-            <Button>{`Session Details`}</Button>
+            <Button variant='outlined'>{`Session Details`}</Button>
           </Link>
         </AccordionActions>
         <SessionButtons sessionId={id} />
