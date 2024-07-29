@@ -160,12 +160,6 @@ a {
   font-family: var(--font-mono);
 }
 
-.homepage .section.section.section-players .player a:hover h3,
-.homepage .section.section.section-players .player a:focus-visible h3 {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .homepage .section.section.section-players .player:has(a:hover),
 .homepage .section.section.section-players .player:has(a:focus-visible) {
   background-color: rgb(var(--foreground-rgb), .2);
