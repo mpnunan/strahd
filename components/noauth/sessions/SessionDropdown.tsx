@@ -6,6 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import SessionButtons from './SessionButtons';
 
 type SessionDropdownObj = {
   id: string;
@@ -27,7 +28,7 @@ export default function SessionDropdown({
 
   return (
     <div>
-      <Accordion defaultExpanded>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls={`Session ${session} content`}
@@ -43,6 +44,7 @@ export default function SessionDropdown({
             <Button>{`Session Details`}</Button>
           </Link>
         </AccordionActions>
+        <SessionButtons sessionId={id} />
       </Accordion>
     </div>
   );

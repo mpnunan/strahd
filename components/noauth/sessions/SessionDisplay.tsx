@@ -2,7 +2,7 @@
 import React from "react";
 import { getSessions } from "@/utils/data";
 import type { Session, Sessions } from "@/utils/types";
-import SessionLink from "./SessionLink";
+import SessionDropdown from "./SessionDropdown";
 
 export default function SessionDisplay() {
   const [sessions, setSessions] = React.useState<Sessions>([]);
@@ -18,11 +18,12 @@ export default function SessionDisplay() {
       <h2>Sessions</h2>
       <div>
         {sessions.map((session: Session) => (
-          <SessionLink
+          <SessionDropdown
             key={`session-${session.id}`}
             id={session.id}
             session={session.session}
             date={session.date}
+            summary={session.summary}
           />
         ))}
       </div>
