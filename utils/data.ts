@@ -12,6 +12,8 @@ import type {
   Npc,
   PlayerNote,
   PlayerNotes,
+  SessionComment,
+  SessionComments,
 } from "./types";
 
 const getSessions = async (): Promise<Sessions> => {
@@ -32,11 +34,6 @@ const getMapLocations = async (): Promise<MapLocations> => {
 const getPlayers = async (): Promise<Players> => {
   const players = await data.get('/players.json');
   return Object.values(players.data);
-}
-
-const createSession = async (payload: Session): Promise<any> => {
-  const session = await data.post('/sessions.json', payload);
-  return session.data;
 }
 
 const getSingleSession = async (id: string| null): Promise<Session> => {
@@ -69,13 +66,13 @@ const getSingleNpc = async (id: string| null): Promise<Npc> => {
   return singleNpc.data;
 }
 
-const createPlayerNote = async (note: PlayerNote): Promise<any> => {
+const createPlayerNote = async (note: PlayerNote): Promise<{name: string}> => {
   const playerNote = await data.post('/playerNotes.json', note);
   return playerNote.data;
 }
 
-const updatePlayerNote = async (note: PlayerNote): Promise<any> => {
-  const playerNote = await data.patch('/playerNotes.json', note);
+const updatePlayerNote = async (id: string, note: PlayerNote): Promise<{name: string}> => {
+  const playerNote = await data.patch(`/playerNotes/${id}.json`, note);
   return playerNote.data;
 }
 
@@ -84,9 +81,29 @@ const getSinglePlayerNote = async (id: string): Promise<PlayerNote> => {
   return playerNote.data;
 }
 
-const getPlayerNotes = async (): Promise<PlayerNotes> => {
-  const playerNotes = await data.get('/playerNotes.json');
+const getPlayerNotes = async (uid: string): Promise<PlayerNotes> => {
+  const playerNotes = await data.get(`/playerNotes.json?orderBy="uid"&equalTo="${uid}"`);
   return Object.values(playerNotes.data);
+}
+
+const createSessionComment = async (comment: SessionComment): Promise<{name: string}> => {
+  const sessionComment = await data.post('/sessionComments.json', comment);
+  return sessionComment.data;
+}
+
+const updateSessionComment = async (id: string, comment: SessionComment): Promise<{name: string}> => {
+  const sessionComment = await data.patch(`/sessionsComments/${id}.json`, comment);
+  return sessionComment.data;
+}
+
+const getSingleSessionComment = async (id: string): Promise<SessionComment> => {
+  const sessionComment = await data.get(`/sessionsComments/${id}.json`);
+  return sessionComment.data;
+}
+
+const getSessionComments = async (uid: string): Promise<SessionComments> => {
+  const sessionComments = await data.get(`/sessionComments.json?orderBy="uid"&equalTo="${uid}"`);
+  return Object.values(sessionComments.data);
 }
 
 export {
@@ -94,7 +111,6 @@ export {
   getNpcs,
   getMapLocations,
   getPlayers,
-  createSession,
   getSingleSession,
   getSinglePlayer,
   getSessionMapLocations,
@@ -105,4 +121,8 @@ export {
   updatePlayerNote,
   getSinglePlayerNote,
   getPlayerNotes,
+  createSessionComment,
+  updateSessionComment,
+  getSingleSessionComment,
+  getSessionComments,
 }

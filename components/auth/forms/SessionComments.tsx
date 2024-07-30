@@ -1,42 +1,51 @@
+import React from "react";
 import { useAuth } from "@/utils/context/AuthContext";
-import { createPlayerNote, updatePlayerNote } from "@/utils/data";
-import { PlayerNote } from "@/utils/types";
+import { SessionComment } from "@/utils/types";
 import { Button, FormControl, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { createSessionComment, updateSessionComment } from "@/utils/data";
 
 const initialState: SessionComment = {
   id: '',
-  date: '',
   comment: '',
   sessionId: '',
   uid: '',
+  playerName: '',
 }
 
-export default function PlayerNotes({
+export default function NewSessionComment({
   id,
-  date,
-  note,
+  comment,
+  sessionId,
   uid,
-}: {id: string | null, date: string | null, note: string | null, uid: string | null}) {
+  playerName
+}: {id: string | null, comment: string | null, sessionId: string, uid: string, playerName: string}) {
   const router = useRouter();
   const { user } = useAuth();
-  const [playerNote, setPlayerNote] = React.useState<PlayerNote>(initialState);
+  const [sessionComment, setSessionComment] = React.useState<SessionComment>(initialState);
 
   React.useEffect(() => {
-    if (id && date && note && uid) {
-      setPlayerNote({
+    if (id && comment) {
+      setSessionComment({
         id,
-        date,
-        note,
-        uid
+        comment,
+        sessionId,
+        uid,
+        playerName,
       });
-    };
-  }, [id, date, note, uid])
+    } else {
+      setSessionComment({
+        ...initialState,
+        sessionId,
+        uid,
+        playerName,
+      });
+    }
+  }, [id, comment, sessionId, uid, playerName])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
-    setPlayerNote((defaultState) => ({
+    setSessionComment((defaultState) => ({
       ...defaultState,
       [name]: value,
     }));
@@ -45,12 +54,12 @@ export default function PlayerNotes({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     if (id) {
-      updatePlayerNote(playerNote).then(() => router.push('/'));
+      updateSessionComment(id, sessionComment).then(() => router.push('/'));
     } else {
-      const payload = { ...playerNote, uid: user.uid };
-      createPlayerNote(payload).then(({ name }: { name: string }) => {
+      const payload = { ...sessionComment, uid: user.uid, playerName: user.displayName };
+      createSessionComment(payload).then(({ name }: { name: string }) => {
         const patchPayload = { id: name };
-        updatePlayerNote({ ...patchPayload, ...payload }).then(() => {
+        updateSessionComment(patchPayload.id, { ...patchPayload, ...payload }).then(() => {
           router.push('/');
         });
       });
@@ -59,23 +68,15 @@ export default function PlayerNotes({
 
   return (
     <FormControl
-      id="playerNoteForm"
+      id="sessionCommentForm"
       component="form"
       onSubmit={handleSubmit}
     >
-      <TextField
-        id="playerNote--date"
-        label="date"
-        name="date"
-        value={playerNote.date}
-        required
-        onChange={handleChange}
-      />
        <TextField
         id="playerNote--note"
         label="Whatcha thinkin"
-        name="note"
-        value={playerNote.note}
+        name="comment"
+        value={sessionComment.comment}
         required
         onChange={handleChange}
         multiline

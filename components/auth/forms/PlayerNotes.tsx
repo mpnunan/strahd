@@ -7,31 +7,28 @@ import React from "react";
 
 const initialState: PlayerNote = {
   id: '',
-  date: '',
   note: '',
   uid: '',
 }
 
-export default function PlayerNotes({
+export default function NewPlayerNote({
   id,
-  date,
   note,
   uid,
-}: {id: string | null, date: string | null, note: string | null, uid: string | null}) {
+}: {id: string | null, note: string | null, uid: string | null}) {
   const router = useRouter();
   const { user } = useAuth();
   const [playerNote, setPlayerNote] = React.useState<PlayerNote>(initialState);
 
   React.useEffect(() => {
-    if (id && date && note && uid) {
+    if (id  && note && uid) {
       setPlayerNote({
         id,
-        date,
         note,
         uid
       });
     };
-  }, [id, date, note, uid])
+  }, [id, note, uid])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
@@ -44,12 +41,12 @@ export default function PlayerNotes({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     if (id) {
-      updatePlayerNote(playerNote).then(() => router.push('/'));
+      updatePlayerNote(id, playerNote).then(() => router.push('/'));
     } else {
       const payload = { ...playerNote, uid: user.uid };
       createPlayerNote(payload).then(({ name }: { name: string }) => {
         const patchPayload = { id: name };
-        updatePlayerNote({ ...patchPayload, ...payload }).then(() => {
+        updatePlayerNote(patchPayload.id, { ...patchPayload, ...payload }).then(() => {
           router.push('/');
         });
       });
@@ -62,14 +59,6 @@ export default function PlayerNotes({
       component="form"
       onSubmit={handleSubmit}
     >
-      <TextField
-        id="playerNote--date"
-        label="date"
-        name="date"
-        value={playerNote.date}
-        required
-        onChange={handleChange}
-      />
        <TextField
         id="playerNote--note"
         label="Whatcha thinkin"

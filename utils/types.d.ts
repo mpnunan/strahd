@@ -70,12 +70,21 @@ type SessionMapLocations = Array<SessionMapLocation>;
 
 type PlayerNote = {
   id: string;
-  date: string;
   note: string;
   uid: string;
 }
 
 type PlayerNotes = Array<PlayerNote>;
+
+type SessionComment = {
+  id: string;
+  comment: string;
+  sessionId: string;
+  uid: string;
+  playerName: string;
+}
+
+type SessionComments = Array<SessionComment>
 
 export type {
   Npc,
@@ -95,4 +104,6 @@ export type {
   SessionNpcs,
   PlayerNote,
   PlayerNotes,
+  SessionComment,
+  SessionComments,
 }
