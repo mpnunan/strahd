@@ -9,6 +9,7 @@ const initialState: SessionComment = {
   id: '',
   comment: '',
   sessionId: '',
+  sessionTitle: '',
   uid: '',
   playerName: '',
 }
@@ -17,9 +18,17 @@ export default function NewSessionComment({
   id,
   comment,
   sessionId,
+  sessionTitle,
   uid,
   playerName
-}: {id: string | null, comment: string | null, sessionId: string, uid: string, playerName: string}) {
+}: {
+  id: string | null,
+  comment: string | null,
+  sessionId: string,
+  sessionTitle: string,
+  uid: string,
+  playerName: string,
+}) {
   const router = useRouter();
   const { user } = useAuth();
   const [sessionComment, setSessionComment] = React.useState<SessionComment>(initialState);
@@ -30,6 +39,7 @@ export default function NewSessionComment({
         id,
         comment,
         sessionId,
+        sessionTitle,
         uid,
         playerName,
       });
@@ -37,11 +47,12 @@ export default function NewSessionComment({
       setSessionComment({
         ...initialState,
         sessionId,
+        sessionTitle,
         uid,
         playerName,
       });
     }
-  }, [id, comment, sessionId, uid, playerName])
+  }, [id, comment, sessionId, sessionTitle, uid, playerName])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;

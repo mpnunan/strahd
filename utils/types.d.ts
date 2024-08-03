@@ -24,6 +24,7 @@ type MapLocation = {
 
 type Session = {
   id: string;
+  title: string;
   session: number;
   date: string;
   summary: string;
@@ -33,6 +34,7 @@ type JoinSession = {
   date: string;
   id: string;
   session: number;
+  title: string;
 }
 
 type JoinNpc = {
@@ -80,6 +82,7 @@ type SessionComment = {
   id: string;
   comment: string;
   sessionId: string;
+  sessionTitle: string;
   uid: string;
   playerName: string;
 }

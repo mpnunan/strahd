@@ -14,13 +14,13 @@ export default function PlayerLink({
   alive
 }: PlayerObj) {
   return (
-    <div className={!alive ? 'player notAlive' : 'player alive'}>
-      <Link href={`/players/${id}`} passHref >
-        <h3>{name}</h3>
-        <p>
-          <sub>{metaName}</sub>
-        </p>
-      </Link>
-    </div>
+    <Link href={`/players/${id}`} passHref >
+      <div className={!alive ? 'player notAlive' : 'player alive'}>
+          <h3>{name}</h3>
+          <p>
+            <sub>{metaName}</sub>
+          </p>
+      </div>
+    </Link>
   )
 }

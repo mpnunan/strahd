@@ -15,7 +15,11 @@ export default function NewPlayerNote({
   id,
   note,
   uid,
-}: {id: string | null, note: string | null, uid: string | null}) {
+}: {
+  id: string | null,
+  note: string | null,
+  uid: string | null,
+}) {
   const router = useRouter();
   const { user } = useAuth();
   const [playerNote, setPlayerNote] = React.useState<PlayerNote>(initialState);

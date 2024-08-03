@@ -151,7 +151,7 @@ a {
 
 .homepage .section.section.section-players .player {
   padding-bottom: 16px;
-  margin-bottom: 6px;
+  padding-top: 6px;
   border-bottom: 1px dashed rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
 }
@@ -160,8 +160,8 @@ a {
   font-family: var(--font-mono);
 }
 
-.homepage .section.section.section-players .player:has(a:hover),
-.homepage .section.section.section-players .player:has(a:focus-visible) {
+.homepage .section.section.section-players a:hover .player,
+.homepage .section.section.section-players a:focus-visible .player {
   background-color: rgb(var(--foreground-rgb), .2);
 }
 
@@ -189,15 +189,20 @@ a {
   padding: clamp(24px, 8vw, 64px)
 }
 
+.details-page .nav-buttons {
+  margin-bottom: 32px;
+}
+
 .details-page h1 {
   margin-bottom: 12px;
 }
 
 .details-page h2 {
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .details-page p {
+  margin-top: 32px;
   margin-bottom: 6px;
   line-height: 1.2;
   font-size: 18px;
@@ -221,11 +226,30 @@ a {
   font-family: var(--font-mono);
 }
 
+
 .MuiAccordionActions-root.MuiAccordionActions-spacing a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
 .MuiAccordionActions-root.MuiAccordionActions-spacing a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
   background-color: rgb(var(--foreground-rgb));
   border-color: rgb(var(--foreground-rgb));
   color: black;
+}
+
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+  color: rgb(var(--foreground-rgb));
+  border-color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
+}
+
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
+  background-color: rgb(var(--foreground-rgb));
+  border-color: rgb(var(--foreground-rgb));
+  color: black;
+}
+
+sub {
+  display: block;
+  margin-block: 12px;
 }
 
 .session-buttons div[role="group"] .MuiButtonBase-root.MuiButton-root.MuiButton-text {

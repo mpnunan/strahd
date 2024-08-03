@@ -11,6 +11,7 @@ import SessionButtons from './SessionButtons';
 type SessionDropdownObj = {
   id: string;
   session: number;
+  title: string;
   date: string;
   summary: string;
 }
@@ -18,6 +19,7 @@ type SessionDropdownObj = {
 export default function SessionDropdown({
   id,
   session,
+  title,
   date,
   summary,
 }: SessionDropdownObj) {
@@ -34,10 +36,11 @@ export default function SessionDropdown({
           aria-controls={`Session-${session}-content`}
           id={`sessionDrop-${id}`}
         >
-          {`Session ${session}: ${date}`}
+          {`Session ${session}: ${title}`}
         </AccordionSummary>
         <AccordionDetails>
           {`${summaryClipped}...`}
+          <sub>{date}</sub>
         </AccordionDetails>
         <AccordionActions>
           <Link href={`/sessions/${id}`} passHref >

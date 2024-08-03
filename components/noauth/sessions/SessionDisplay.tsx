@@ -22,6 +22,7 @@ export default function SessionDisplay() {
             key={`session-${session.id}`}
             id={session.id}
             session={session.session}
+            title={session.title}
             date={session.date}
             summary={session.summary}
           />

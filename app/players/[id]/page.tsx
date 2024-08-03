@@ -2,6 +2,8 @@
 import PlayerDetails from "@/components/noauth/players/PlayerDetails";
 import { getSinglePlayer } from "@/utils/data";
 import { Player } from "@/utils/types";
+import { Button } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 export default function SinglePlayer({ params }: { params: { id: string } }) {
@@ -18,6 +20,11 @@ export default function SinglePlayer({ params }: { params: { id: string } }) {
   
   return (
     <div className="details-page">
+      <div className="nav-buttons">
+        <Link href="/" passHref>
+          <Button variant="outlined">Home</Button>
+        </Link>
+      </div>
       <PlayerDetails
         id={player?.id}
         name={player?.name}

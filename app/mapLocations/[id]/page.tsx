@@ -2,6 +2,8 @@
 import React from "react";
 import { getSingleMapLocation } from "@/utils/data";
 import { MapLocation } from "@/utils/types";
+import Link from "next/link";
+import { Button } from "@mui/material";
 
 export default function SingleMapLocation({ params }: { params: { id: string } }) {
 
@@ -17,6 +19,11 @@ export default function SingleMapLocation({ params }: { params: { id: string } }
   
   return (
     <div className="details-page">
+      <div className="nav-buttons">
+        <Link href="/" passHref>
+          <Button variant="outlined">Home</Button>
+        </Link>
+      </div>
       <h1>{mapLocation?.name}</h1>
       <div>
         <p>{mapLocation?.details}</p>
