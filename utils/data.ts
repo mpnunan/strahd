@@ -101,9 +101,19 @@ const getSingleSessionComment = async (id: string): Promise<SessionComment> => {
   return sessionComment.data;
 }
 
-const getSessionComments = async (uid: string): Promise<SessionComments> => {
-  const sessionComments = await data.get(`/sessionComments.json?orderBy="uid"&equalTo="${uid}"`);
+const getSessionComments = async (sessionId: string): Promise<SessionComments> => {
+  const sessionComments = await data.get(`/sessionComments.json?orderBy="sessionId"&equalTo="${sessionId}"`);
   return Object.values(sessionComments.data);
+}
+
+const deleteNote = async (id: string): Promise<any> => {
+  const note = await data.delete(`/playerNotes/${id}`);
+  return note.data;
+}
+
+const deleteComment = async (id: string): Promise<any> => {
+  const comment = await data.delete(`/sessionComments/${id}`);
+  return comment.data;
 }
 
 export {
@@ -125,4 +135,6 @@ export {
   updateSessionComment,
   getSingleSessionComment,
   getSessionComments,
+  deleteNote,
+  deleteComment,
 }

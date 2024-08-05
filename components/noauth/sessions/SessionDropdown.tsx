@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { Session } from '@/utils/types';
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -8,13 +9,6 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import SessionButtons from './SessionButtons';
 
-type SessionDropdownObj = {
-  id: string;
-  session: number;
-  title: string;
-  date: string;
-  summary: string;
-}
 
 export default function SessionDropdown({
   id,
@@ -22,7 +16,7 @@ export default function SessionDropdown({
   title,
   date,
   summary,
-}: SessionDropdownObj) {
+}: Session) {
 
   const summaryJoined = summary.replace('\n', ' ');
 
