@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type { Session } from '@/utils/types';
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';

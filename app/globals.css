@@ -110,9 +110,13 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
+  h1.header, .homepage h2 {
+    text-align: center;
+  }
   .homepage {
     flex-direction: column-reverse;
     justify-content: flex-start;
@@ -120,9 +124,24 @@ a {
   }
   .homepage .section {
     margin-block: 32px;
+    padding-inline: 0;
   }
   .homepage .section.section.section-players {
     text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  .homepage .section.section.section-players .player {
+    padding-inline: 32px;
+  }
+  body main.page_main__nw1Wk {
+    padding-inline: 3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body main.page_main__nw1Wk {
+    padding-inline: 2rem;
   }
 }
 
@@ -214,6 +233,11 @@ a {
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   border: 1px solid rgb(var(--foreground-rgb));
+}
+
+.MuiButtonBase-root.MuiAccordionSummary-root:hover,
+.MuiButtonBase-root.MuiAccordionSummary-root:focus-visible {
+  background-color: rgba(var(--foreground-rgb), .2);
 }
 
 .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root {
