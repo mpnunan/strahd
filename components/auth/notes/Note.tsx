@@ -1,4 +1,4 @@
-import { deleteNote } from "@/utils/data";
+import { deletePlayerNote } from "@/utils/data";
 import { Button } from "@mui/material";
 
 export default function Note({
@@ -13,7 +13,7 @@ export default function Note({
 
   const deleteFunc = () => {
     if (window.confirm('Delete this note?')) {
-      deleteNote(id).then(() => loadNotes());
+      deletePlayerNote(id).then(() => loadNotes());
     }
   }
 

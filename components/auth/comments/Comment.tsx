@@ -1,5 +1,4 @@
-import { deleteComment } from "@/utils/data";
-import type { SessionComment } from "@/utils/types";
+import { deleteSessionComment } from "@/utils/data";
 import { Button } from "@mui/material";
 
 export default function Comment({
@@ -18,7 +17,7 @@ export default function Comment({
 
   const deleteFunc = () => {
     if (window.confirm('Delete this comment?')) {
-      deleteComment(id).then(() => loadComments());
+      deleteSessionComment(id).then(() => loadComments());
     }
   }
   
