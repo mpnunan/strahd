@@ -16,6 +16,7 @@ import type {
   PlayerNotes,
   SessionComment,
   SessionComments,
+  MapImages,
 } from "./types";
 
 // ================================
@@ -112,6 +113,13 @@ const createMapLocation = async (payload: MapLocation): Promise<{name: string}> 
 const updateMapLocation = async (id: string, payload: any): Promise<any> => {
   const mapLocation = await data.patch(`/mapLocations/${id}.json`, payload);
   return mapLocation.data;
+}
+
+// Map Images
+
+const getMapImages = async (mapLocationId: string | null): Promise<MapImages> => {
+  const mapImages = await data.get(`/mapImages.json?orderBy="mapLocationId"&equalTo="${mapLocationId}"`);
+  return Object.values(mapImages.data);
 }
 
 // ================================
@@ -213,6 +221,7 @@ export {
   getSingleMapLocation,
   createMapLocation,
   updateMapLocation,
+  getMapImages,
   getSessionNpcs,
   createSessionNpc,
   getSessionMapLocations,
