@@ -17,9 +17,17 @@ export default function SingleMapLocation({ params }: { params: { id: string } }
     getSingleMapLocation(mapLocationId).then((data) => {
       setMapLocation(data);
     })
-    getMapImages(mapLocationId).then((data) => {
-      setMapImages(data);
-    })
+    
+    getMapImages(mapLocationId)
+      .then((data) => {
+        const locations = data.filter(location => (
+          location.playerVisible !== false
+        ));
+        return locations;
+      })
+      .then((locationArray) => {
+          setMapImages(locationArray);
+      })
   }, [mapLocationId])
   
   return (
