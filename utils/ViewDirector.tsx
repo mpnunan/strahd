@@ -2,7 +2,6 @@
 import React from 'react';
 import { useAuth } from '@/utils/context/AuthContext';
 import Loading from '@/components/auth/Loading';
-import NavHeader from '@/components/auth/NavHeader';
 import Signin from '@/components/auth/Signin';
 import SignOut from '@/components/auth/Signout';
 
