@@ -310,3 +310,25 @@ sub {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text {
+  color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
+}
+
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
+  background-color: rgba(var(--foreground-rgb), .2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sign-out-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: 64px;
+  padding-top: 32px;
+}

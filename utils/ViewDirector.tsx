@@ -21,14 +21,14 @@ export default function ViewDirectorBasedOnUserAuthStatus({
   // what the user should see if they are logged in
   if (user) {
     return (
-      <>
+      <main>
         <div className="sign-out">
           <SignOut />
         </div> {/* Signout only visible if user is logged in and is in every view */}
         <div className="container">
           {children}
         </div>
-      </>
+      </main>
     );
   }
 

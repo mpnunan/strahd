@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/utils/context/AuthContext";
+import ViewDirectorBasedOnUserAuthStatus from "@/utils/ViewDirector";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthProvider>
+        {' '}
+        {/* gives children components access to user and auth methods */}
+          <ViewDirectorBasedOnUserAuthStatus>{children}</ViewDirectorBasedOnUserAuthStatus>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
