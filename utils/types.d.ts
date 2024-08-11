@@ -1,5 +1,3 @@
-import { UrlWithStringQuery } from "url";
-
 type Npc = {
   id: string;
   name: string;
