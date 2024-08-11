@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { Session } from '@/utils/types';
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -8,19 +8,14 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import SessionButtons from './SessionButtons';
 
-type SessionDropdownObj = {
-  id: string;
-  session: number;
-  date: string;
-  summary: string;
-}
 
 export default function SessionDropdown({
   id,
   session,
+  title,
   date,
   summary,
-}: SessionDropdownObj) {
+}: Session) {
 
   const summaryJoined = summary.replace('\n', ' ');
 
@@ -34,10 +29,11 @@ export default function SessionDropdown({
           aria-controls={`Session-${session}-content`}
           id={`sessionDrop-${id}`}
         >
-          {`Session ${session}: ${date}`}
+          {`Session ${session}: ${title}`}
         </AccordionSummary>
         <AccordionDetails>
           {`${summaryClipped}...`}
+          <sub>{date}</sub>
         </AccordionDetails>
         <AccordionActions>
           <Link href={`/sessions/${id}`} passHref >

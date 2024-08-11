@@ -5,8 +5,8 @@ import { signOut } from "@/utils/auth";
 
 export default function SignOut() {
   return (
-    <>
-      <Button onClick={signOut}>Sign Out</Button>
-    </>
+    <div className="sign-out-wrapper">
+      <Button className="sign-out" onClick={signOut}>Sign Out</Button>
+    </div>
   )
 }

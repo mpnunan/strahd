@@ -110,9 +110,13 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
+  h1.header, .homepage h2 {
+    text-align: center;
+  }
   .homepage {
     flex-direction: column-reverse;
     justify-content: flex-start;
@@ -120,9 +124,24 @@ a {
   }
   .homepage .section {
     margin-block: 32px;
+    padding-inline: 0;
   }
   .homepage .section.section.section-players {
     text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  .homepage .section.section.section-players .player {
+    padding-inline: 32px;
+  }
+  body main.page_main__nw1Wk {
+    padding-inline: 3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body main.page_main__nw1Wk {
+    padding-inline: 2rem;
   }
 }
 
@@ -151,7 +170,7 @@ a {
 
 .homepage .section.section.section-players .player {
   padding-bottom: 16px;
-  margin-bottom: 6px;
+  padding-top: 6px;
   border-bottom: 1px dashed rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
 }
@@ -160,14 +179,8 @@ a {
   font-family: var(--font-mono);
 }
 
-.homepage .section.section.section-players .player a:hover h3,
-.homepage .section.section.section-players .player a:focus-visible h3 {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.homepage .section.section.section-players .player:has(a:hover),
-.homepage .section.section.section-players .player:has(a:focus-visible) {
+.homepage .section.section.section-players a:hover .player,
+.homepage .section.section.section-players a:focus-visible .player {
   background-color: rgb(var(--foreground-rgb), .2);
 }
 
@@ -195,19 +208,47 @@ a {
   padding: clamp(24px, 8vw, 64px)
 }
 
+.details-page .nav-buttons {
+  margin-bottom: 32px;
+}
+
 .details-page h1 {
   margin-bottom: 12px;
 }
 
 .details-page h2 {
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .details-page p {
+  margin-top: 32px;
   margin-bottom: 6px;
   line-height: 1.2;
   font-size: 18px;
   font-family: var(--font-mono);
+}
+
+.map-image-section {
+  width: 100%;
+}
+
+.map-image-section .image-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.map-image-section .image-wrapper h2 {
+  text-align: center;
+}
+
+.map-image-section .image-wrapper .map-image {
+  width: auto;
+  max-width: 600px;
+  height: auto;
+  max-height: 80vh;
 }
 
 .MuiPaper-root.MuiAccordion-root.MuiAccordion-gutters {
@@ -215,6 +256,11 @@ a {
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
   border: 1px solid rgb(var(--foreground-rgb));
+}
+
+.MuiButtonBase-root.MuiAccordionSummary-root:hover,
+.MuiButtonBase-root.MuiAccordionSummary-root:focus-visible {
+  background-color: rgba(var(--foreground-rgb), .2);
 }
 
 .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root {
@@ -227,11 +273,30 @@ a {
   font-family: var(--font-mono);
 }
 
+
 .MuiAccordionActions-root.MuiAccordionActions-spacing a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
 .MuiAccordionActions-root.MuiAccordionActions-spacing a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
   background-color: rgb(var(--foreground-rgb));
   border-color: rgb(var(--foreground-rgb));
   color: black;
+}
+
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+  color: rgb(var(--foreground-rgb));
+  border-color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
+}
+
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
+  background-color: rgb(var(--foreground-rgb));
+  border-color: rgb(var(--foreground-rgb));
+  color: black;
+}
+
+sub {
+  display: block;
+  margin-block: 12px;
 }
 
 .session-buttons div[role="group"] .MuiButtonBase-root.MuiButton-root.MuiButton-text {
@@ -244,4 +309,26 @@ a {
   background-color: rgba(var(--foreground-rgb), .2);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text {
+  color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
+}
+
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
+.sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
+.sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
+  background-color: rgba(var(--foreground-rgb), .2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sign-out-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: 64px;
+  padding-top: 32px;
 }

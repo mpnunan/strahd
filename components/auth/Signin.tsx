@@ -11,11 +11,11 @@ export default function Signin() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        textAlign: 'center',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <Button onClick={signIn}>
+      <h1>Curse of Strahd</h1>
+      <Button className="sign-in" onClick={signIn}>
         Sign In
       </Button>
     </div>
