@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { getSessionNpcs } from "@/utils/data";
 import { SessionNpcs } from "@/utils/types";
@@ -13,7 +12,7 @@ export default function NpcsButtons({ sessionId }: {sessionId: string | undefine
     getSessionNpcs(sessionId).then((data) => {
       setSessionNpcs(data);
     });
-  }, [])
+  }, [sessionId])
 
   return (
     <ButtonGroup className="session-buttons-group session-buttons--npcs">

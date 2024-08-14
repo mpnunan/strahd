@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { getSessionMapLocations } from "@/utils/data";
 import { SessionMapLocations } from "@/utils/types";
@@ -13,7 +12,7 @@ export default function MapLocationsButtons({ sessionId }: {sessionId: string | 
     getSessionMapLocations(sessionId).then((data) => {
       setSessionMapLocations(data);
     });
-  }, [])
+  }, [sessionId])
 
   return (
     <ButtonGroup className="session-buttons-group session-buttons--mapLocations">
