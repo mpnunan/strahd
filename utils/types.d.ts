@@ -13,6 +13,7 @@ type Player = {
   metaName: string;
   alive: boolean;
   bio: string;
+  uid: string | null;
 }
 
 type MapLocation = {

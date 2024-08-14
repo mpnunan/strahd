@@ -6,7 +6,7 @@ import { Button, ButtonGroup } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-export default function MapLocationsButtons({ sessionId }: {sessionId: string}) {
+export default function MapLocationsButtons({ sessionId }: {sessionId: string | undefined}) {
   const [sessionMapLocations, setSessionMapLocations] = React.useState<SessionMapLocations>();
 
   React.useEffect(() => {

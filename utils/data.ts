@@ -57,6 +57,11 @@ const getSinglePlayer = async (id: string| null): Promise<Player> => {
   return singlePlayer.data;
 }
 
+const getSinglePlayerByUid = async (uid: string | null): Promise<Player> => {
+  const singlePlayer = await data.get(`/players.json?orderBy="uid"&equalTo="${uid}"`);
+  return singlePlayer.data;
+}
+
 const createPlayer = async (payload: Player): Promise<{name: string}> => {
   const player = await data.post('/players.json', payload);
   return player.data;
@@ -126,7 +131,7 @@ const getMapImages = async (mapLocationId: string | null): Promise<MapImages> =>
 // Session NPCs & Map Locations
 // ================================
 
-const getSessionNpcs = async (sessionId: string): Promise<SessionNpcs> => {
+const getSessionNpcs = async (sessionId: string | undefined): Promise<SessionNpcs> => {
   const npcs = await data.get(`/sessionNpcs.json?orderBy="sessionId"&equalTo="${sessionId}"`);
   return Object.values(npcs.data);
 }
@@ -136,7 +141,7 @@ const createSessionNpc = async (payload: SessionNpc): Promise<{name: string}> =>
   return sessionNpc.data;
 }
 
-const getSessionMapLocations = async (sessionId: string): Promise<SessionMapLocations> => {
+const getSessionMapLocations = async (sessionId: string | undefined): Promise<SessionMapLocations> => {
   const sessionMapLocations = await data.get(`/sessionLocations.json?orderBy="sessionId"&equalTo="${sessionId}"`);
   return Object.values(sessionMapLocations.data);
 }
@@ -179,12 +184,12 @@ const deletePlayerNote = async (id: string): Promise<any> => {
 // Session Comments
 // ================================
 
-const getSingleSessionComment = async (id: string): Promise<SessionComment> => {
+const getSingleSessionComment = async (id: string | undefined): Promise<SessionComment> => {
   const sessionComment = await data.get(`/sessionsComments/${id}.json`);
   return sessionComment.data;
 }
 
-const getSessionComments = async (sessionId: string): Promise<SessionComments> => {
+const getSessionComments = async (sessionId: string | undefined): Promise<SessionComments> => {
   const sessionComments = await data.get(`/sessionComments.json?orderBy="sessionId"&equalTo="${sessionId}"`);
   return Object.values(sessionComments.data);
 }
@@ -211,6 +216,7 @@ export {
   updateSession,
   getPlayers,
   getSinglePlayer,
+  getSinglePlayerByUid,
   createPlayer,
   updatePlayer,
   getNpcs,

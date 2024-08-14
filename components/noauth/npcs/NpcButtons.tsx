@@ -6,7 +6,7 @@ import { Button, ButtonGroup } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-export default function NpcsButtons({ sessionId }: {sessionId: string}) {
+export default function NpcsButtons({ sessionId }: {sessionId: string | undefined}) {
   const [sessionNpcs, setSessionNpcs] = React.useState<SessionNpcs>();
 
   React.useEffect(() => {

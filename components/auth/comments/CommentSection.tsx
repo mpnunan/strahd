@@ -7,7 +7,7 @@ import Comment from "./Comment";
 
 export default function CommentSection({
   sessionId
-}: {sessionId: string}) {
+}: {sessionId: string | undefined}) {
   const [comments, setComments] = React.useState<SessionComments>([]);
   const { user } = useAuth();
 

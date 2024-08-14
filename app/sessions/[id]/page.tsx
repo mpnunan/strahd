@@ -5,6 +5,9 @@ import React from "react";
 import SessionDetails from "@/components/noauth/sessions/SessionDetails";
 import Link from "next/link";
 import { Button } from "@mui/material";
+import NpcsButtons from "@/components/noauth/npcs/NpcButtons";
+import MapLocationsButtons from "@/components/noauth/mapLocations/MapLocationButtons";
+import CommentSection from "@/components/auth/comments/CommentSection";
 
 export default function SingleSession({ params }: { params: { id: string } }) {
 
@@ -32,6 +35,21 @@ export default function SingleSession({ params }: { params: { id: string } }) {
         date={session?.date}
         summary={session?.summary}
       />
+      <section className="details-page--info">
+        <div className="info--npcs">
+          <h2>Session NPCs</h2>
+          <NpcsButtons sessionId={session?.id} />
+        </div>
+        <div className="info--locations">
+          <h2>Session Locations</h2>
+          <MapLocationsButtons sessionId={session?.id} />
+        </div>
+      </section>
+      <section className="details-page--comments">
+        <h2>Comments</h2>
+        <CommentSection sessionId={session?.id} />
+        
+      </section>
     </div>
   )
 }
