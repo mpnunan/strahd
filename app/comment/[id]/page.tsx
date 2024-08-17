@@ -3,6 +3,8 @@ import NewSessionComment from "@/components/auth/forms/SessionComments";
 import { useAuth } from "@/utils/context/AuthContext";
 import { getSinglePlayerByUid, getSingleSession } from "@/utils/data";
 import { Player } from "@/utils/types";
+import { Button } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 type InitialState = {
@@ -47,13 +49,20 @@ export default function AddComment({ params }: { params: { id: string } }) {
   })
 
   return (
-    <NewSessionComment
-      id={session.id}
-      comment={session.comment}
-      sessionId={session.sessionId}
-      sessionTitle={session.sessionTitle}
-      uid={session.uid}
-      playerName={session.playerName}
-    />
+    <div className="comment-page comment-page--new">
+      <div className="nav-buttons">
+        <Link href="/" passHref>
+          <Button variant="outlined">Home</Button>
+        </Link>
+      </div>
+      <NewSessionComment
+        id={session.id}
+        comment={session.comment}
+        sessionId={session.sessionId}
+        sessionTitle={session.sessionTitle}
+        uid={session.uid}
+        playerName={session.playerName}
+      />
+    </div>
   );
 }

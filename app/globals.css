@@ -311,6 +311,18 @@ sub {
   text-underline-offset: 3px;
 }
 
+.MuiButtonBase-root.MuiButton-root.MuiButton-text {
+  color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
+.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
+  background-color: rgba(var(--foreground-rgb), .2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text,
 .sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text {
   color: rgb(var(--foreground-rgb));
