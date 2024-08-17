@@ -4,6 +4,8 @@ import { getSessionComments } from "@/utils/data";
 import type { SessionComments } from "@/utils/types";
 import React from "react";
 import Comment from "./Comment";
+import Link from "next/link";
+import { Button } from "@mui/material";
 
 export default function CommentSection({
   sessionId
@@ -23,6 +25,11 @@ export default function CommentSection({
 
   return (
     <div className="comment-section">
+      <div className="comment-section--new">
+        <Link href={`/comment/${sessionId}`} passHref>
+          <Button variant="outlined">Add Comment</Button>
+        </Link>
+      </div>
       {comments.map((comment) => (
         <Comment
           key={`comment--${comment.id}`}
