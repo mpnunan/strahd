@@ -33,12 +33,12 @@ export default function UpdateComment({ params }: { params: { commentId: string 
         </Link>
       </div>
       <NewSessionComment
-      id={comment.id}
-      comment={comment.comment}
-      sessionId={comment.sessionId}
-      sessionTitle={comment.sessionTitle}
-      uid={comment.uid}
-      playerName={comment.playerName}
+      id={comment?.id}
+      comment={comment?.comment}
+      sessionId={comment?.sessionId}
+      sessionTitle={comment?.sessionTitle}
+      uid={comment?.uid}
+      playerName={comment?.playerName}
     />
     </div>
   )

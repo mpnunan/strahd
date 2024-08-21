@@ -185,7 +185,7 @@ const deletePlayerNote = async (id: string): Promise<any> => {
 // ================================
 
 const getSingleSessionComment = async (id: string | undefined): Promise<SessionComment> => {
-  const sessionComment = await data.get(`/sessionsComments/${id}.json`);
+  const sessionComment = await data.get(`/sessionComments/${id}.json`);
   return sessionComment.data;
 }
 
