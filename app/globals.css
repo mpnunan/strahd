@@ -307,20 +307,20 @@ sub {
 .session-buttons div[role="group"] .MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
 .session-buttons div[role="group"] .MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
   background-color: rgba(var(--foreground-rgb), .2);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .MuiButtonBase-root.MuiButton-root.MuiButton-text {
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
+  border-radius: 6px;
+  border: .5px solid rgba(var(--foreground-rgb), .4);
+  margin: 2px;
+  padding-block: 2px;
 }
 
 .MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
 .MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
   background-color: rgba(var(--foreground-rgb), .2);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .sign-in.MuiButtonBase-root.MuiButton-root.MuiButton-text,
@@ -334,8 +334,6 @@ sub {
 .sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:hover,
 .sign-out.MuiButtonBase-root.MuiButton-root.MuiButton-text:focus-visible {
   background-color: rgba(var(--foreground-rgb), .2);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .sign-out-wrapper {
