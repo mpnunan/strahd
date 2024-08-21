@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from "@/utils/context/AuthContext";
 import { getSessionComments } from "@/utils/data";
 import type { SessionComments } from "@/utils/types";
@@ -20,8 +19,10 @@ export default function CommentSection({
   }
 
   React.useEffect(() => {
-    getComments();
-  }, [])
+    getSessionComments(sessionId).then((data) => {
+      setComments(data);
+    });
+  }, [sessionId])
 
   return (
     <div className="comment-section">

@@ -17,7 +17,7 @@ const initialState: SessionComment = {
 
 export default function UpdateComment({ params }: { params: { commentId: string } }) {
   const commentId = params.commentId;
-  const [comment, setComment] = React.useState<SessionComment>();
+  const [comment, setComment] = React.useState<SessionComment>(initialState);
 
   React.useEffect(() => {
     getSingleSessionComment(commentId).then((data) => {
@@ -33,13 +33,13 @@ export default function UpdateComment({ params }: { params: { commentId: string 
         </Link>
       </div>
       <NewSessionComment
-        id={initialState.id + comment?.id}
-        comment={initialState.id + comment?.comment}
-        sessionId={initialState.id + comment?.sessionId}
-        sessionTitle={initialState.id + comment?.sessionTitle}
-        uid={initialState.id + comment?.uid}
-        playerName={initialState.id + comment?.playerName}
-      />
+      id={comment.id}
+      comment={comment.comment}
+      sessionId={comment.sessionId}
+      sessionTitle={comment.sessionTitle}
+      uid={comment.uid}
+      playerName={comment.playerName}
+    />
     </div>
   )
 }

@@ -46,7 +46,7 @@ export default function AddComment({ params }: { params: { id: string } }) {
         playerName: initialState.playerName + player?.name,
       });
     })
-  })
+  }, [player?.name, sessionId, user.uid])
 
   return (
     <div className="comment-page comment-page--new">

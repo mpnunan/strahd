@@ -68,11 +68,12 @@ export default function NewSessionComment({
       updateSessionComment(id, sessionComment).then(() => router.push('/'));
     } else {
       const payload = { ...sessionComment, uid: user.uid, playerName: user.displayName };
-      createSessionComment(payload).then(({ name }: { name: string }) => {
-        const patchPayload = { id: name };
-        updateSessionComment(patchPayload.id, { ...patchPayload, ...payload }).then(() => {
+      createSessionComment(payload)
+        .then(({ name }: { name: string }) => {
+          updateSessionComment(name, { id: name });
+      })
+        .then(() => {
           router.push('/');
-        });
       });
     }
   };

@@ -200,7 +200,7 @@ const createSessionComment = async (comment: SessionComment): Promise<{name: str
 }
 
 const updateSessionComment = async (id: string, comment: any): Promise<any> => {
-  const sessionComment = await data.patch(`/sessionsComments/${id}.json`, comment);
+  const sessionComment = await data.patch(`/sessionComments/${id}.json`, comment);
   return sessionComment.data;
 }
 
