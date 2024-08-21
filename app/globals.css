@@ -281,17 +281,25 @@ a {
   color: black;
 }
 
-a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined,
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
   color: rgb(var(--foreground-rgb));
   border-color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
 }
 
 a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
-a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
+a .MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible,
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined:hover,
+button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined:focus-visible {
   background-color: rgb(var(--foreground-rgb));
   border-color: rgb(var(--foreground-rgb));
   color: black;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+  padding-block: 2px;
+  margin: 2px;
 }
 
 sub {
@@ -341,4 +349,13 @@ sub {
   justify-content: flex-end;
   padding-inline: 64px;
   padding-top: 32px;
+}
+
+.MuiButtonGroup-root {
+  flex-wrap: wrap;
+}
+
+:root *::selection {
+  background-color: rgba(var(--foreground-rgb), 1);
+  color: black;
 }
