@@ -359,3 +359,18 @@ sub {
   background-color: rgba(var(--foreground-rgb), 1);
   color: black;
 }
+
+
+.MuiTextField-root .MuiInputLabel-root,
+.MuiTextField-root .MuiInputLabel-asterisk,
+.MuiTextField-root .MuiInputBase-root.MuiOutlinedInput-root,
+.MuiTextField-root .MuiInputBase-input.MuiOutlinedInput-input,
+.MuiTextField-root .MuiOutlinedInput-notchedOutline {
+  color: rgb(var(--foreground-rgb));
+  border-color: rgba(var(--foreground-rgb), .8);
+}
+
+.MuiTextField-root .Mui-focused .MuiOutlinedInput-notchedOutline,
+.MuiInputBase-root.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(var(--foreground-rgb));
+}

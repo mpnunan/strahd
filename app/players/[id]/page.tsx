@@ -36,13 +36,13 @@ export default function SinglePlayer({ params }: { params: { id: string } }) {
       />
       {player?.uid === user.uid ? (
         <ButtonGroup>
-        <Link href={`/playerBio/${playerId}`} passHref>
-          <Button variant="outlined">Update Bio</Button>
-        </Link>
-        <Link href={`/playerBio/${user.uid}`} passHref>
-          <Button variant="outlined">New Character</Button>
-        </Link>
-      </ButtonGroup>
+          <Link href={`/playerBio/${playerId}`} passHref>
+            <Button variant="outlined">Update Bio</Button>
+          </Link>
+          <Link href={`/playerBio/${user.uid}`} passHref>
+            <Button variant="outlined">New Character</Button>
+          </Link>
+        </ButtonGroup>
       ) : null}
     </div>
   )
