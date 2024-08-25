@@ -19,28 +19,28 @@ const initialState: PlayerBio = {
   uid: '',
 }
 
-export default function NewPlayerNote({
+export default function NewPlayerBio({
   id,
   name,
   bio,
   uid,
 }: {
-  id: string | null,
-  name: string | null,
-  bio: string | null,
-  uid: string | null,
+  id: string | null | undefined,
+  name: string | null | undefined,
+  bio: string | null | undefined,
+  uid: string,
 }) {
   const router = useRouter();
   const { user } = useAuth();
   const [playerBio, setPlayerBio] = React.useState<PlayerBio>(initialState);
 
   React.useEffect(() => {
-    if (id  && name && bio && uid) {
+    if (id  && name && bio) {
       setPlayerBio({
         id,
         name,
         bio,
-        uid
+        uid: uid,
       });
     };
   }, [id, name, bio, uid])
