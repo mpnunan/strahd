@@ -1,10 +1,15 @@
-import PropTypes from 'prop-types';
-import { useAuth } from './context/AuthContext';
-import Loading from '@/components/Loading';
-import Signin from '@/components/Signin';
-import NavHeader from '@/components/NavHeader';
+'use client'
+import React from 'react';
+import { useAuth } from '@/utils/context/AuthContext';
+import Loading from '@/components/auth/Loading';
+import Signin from '@/components/auth/Signin';
+import SignOut from '@/components/auth/Signout';
 
-const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProps }: any) => {
+export default function ViewDirectorBasedOnUserAuthStatus({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const { user, userLoading }: any = useAuth();
 
   // if user state is null, then show loader
@@ -15,21 +20,16 @@ const ViewDirectorBasedOnUserAuthStatus: any = ({ component: Component, pageProp
   // what the user should see if they are logged in
   if (user) {
     return (
-      <>
-        <NavHeader /> {/* NavBar only visible if user is logged in and is in every view */}
+      <main>
+        <div className="sign-out">
+          <SignOut />
+        </div> {/* Signout only visible if user is logged in and is in every view */}
         <div className="container">
-          <Component {...pageProps} />
+          {children}
         </div>
-      </>
+      </main>
     );
   }
 
   return <Signin />;
-};
-
-export default ViewDirectorBasedOnUserAuthStatus;
-
-ViewDirectorBasedOnUserAuthStatus.propTypes = {
-  component: PropTypes.func.isRequired,
-  pageProps: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
