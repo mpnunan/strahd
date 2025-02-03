@@ -1,4 +1,4 @@
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { getSessionComments } from "@/utils/data";
 import type { SessionComments } from "@/utils/types";
 import React from "react";
@@ -10,7 +10,8 @@ export default function CommentSection({
   sessionId
 }: {sessionId: string | undefined}) {
   const [comments, setComments] = React.useState<SessionComments>([]);
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
 
   const getComments = (): void => {
     getSessionComments(sessionId).then((data) => {
