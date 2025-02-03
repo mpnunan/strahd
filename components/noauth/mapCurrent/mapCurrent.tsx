@@ -10,7 +10,7 @@ const MapCurrent: React.FC = () => {
       <Button
         variant="outlined"
         onClick={() => {
-          router.push("/mapCurrent");
+          router.push("/mapLocations/mapCurrent");
         }}
       >
         Session Start Location

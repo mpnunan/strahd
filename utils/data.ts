@@ -117,7 +117,7 @@ const getSingleMapLocation = async (
 const createMapLocation = async (
   payload: MapLocation
 ): Promise<{ name: string }> => {
-  const mapLocation = await data.post("/maplocations.json", payload);
+  const mapLocation = await data.post("/mapLocations.json", payload);
   return mapLocation.data;
 };
 
