@@ -1,6 +1,6 @@
 'use client'
 import PlayerDetails from "@/components/noauth/players/PlayerDetails";
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { getSinglePlayer } from "@/utils/data";
 import { Player } from "@/utils/types";
 import { Button, ButtonGroup } from "@mui/material";
@@ -10,7 +10,8 @@ import React from "react";
 export default function SinglePlayer({ params }: { params: { id: string } }) {
 
   const playerId = params.id;
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
  
   const [player, setPlayer] = React.useState<Player>();
 

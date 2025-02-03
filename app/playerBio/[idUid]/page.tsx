@@ -1,6 +1,6 @@
 'use client'
 import NewPlayerBio from "@/components/auth/forms/PlayerBio";
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { getSinglePlayerByUid } from "@/utils/data";
 import { Button } from "@mui/material";
 import Link from "next/link";
@@ -13,7 +13,8 @@ type PlayerBio = {
 }
 
 export default function PlayerBio({ params }: { params: { idUid: string } }) {
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
   const idUid = params.idUid;
   const [bio, setBio] = React.useState<PlayerBio>();
 

@@ -1,6 +1,6 @@
 'use client'
 import NewSessionComment from "@/components/auth/forms/SessionComments";
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { getSinglePlayerByUid, getSingleSession } from "@/utils/data";
 import { Player } from "@/utils/types";
 import { Button } from "@mui/material";
@@ -26,7 +26,8 @@ const initialState = {
 
 export default function AddComment({ params }: { params: { id: string } }) {
   const sessionId = params.id;
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
   const [player, setPlayer] = React.useState<Player>();
   const [session, setSession] = React.useState<InitialState>(initialState);
 
