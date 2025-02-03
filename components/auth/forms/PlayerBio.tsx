@@ -1,4 +1,4 @@
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { createPlayer, updatePlayer } from "@/utils/data";
 import { Player } from "@/utils/types";
 import { Button, FormControl, TextField } from "@mui/material";
@@ -31,7 +31,9 @@ export default function NewPlayerBio({
   uid: string,
 }) {
   const router = useRouter();
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
+
   const [playerBio, setPlayerBio] = React.useState<PlayerBio>(initialState);
 
   React.useEffect(() => {

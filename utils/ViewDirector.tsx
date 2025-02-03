@@ -4,13 +4,14 @@ import { useAuth } from '@/utils/context/AuthContext';
 import Loading from '@/components/auth/Loading';
 import Signin from '@/components/auth/Signin';
 import SignOut from '@/components/auth/Signout';
+import { AuthContextType } from './context/AuthContext';
 
 export default function ViewDirectorBasedOnUserAuthStatus({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user, userLoading }: any = useAuth();
+  const { user, updateUser, userLoading }: AuthContextType = useAuth();
 
   // if user state is null, then show loader
   if (userLoading) {
