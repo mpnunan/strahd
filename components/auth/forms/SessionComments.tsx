@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { SessionComment } from "@/utils/types";
 import { Button, FormControl, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,8 @@ export default function NewSessionComment({
   playerName: string,
 }) {
   const router = useRouter();
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
   const [sessionComment, setSessionComment] = React.useState<SessionComment>(initialState);
 
   React.useEffect(() => {
@@ -67,7 +68,7 @@ export default function NewSessionComment({
     if (id) {
       updateSessionComment(id, sessionComment).then(() => router.push('/'));
     } else {
-      const payload = { ...sessionComment, uid: user.uid, playerName: user.displayName };
+      const payload = { ...sessionComment, uid: user?.uid, playerName: user?.displayName };
       createSessionComment(payload)
         .then(({ name }: { name: string }) => {
           updateSessionComment(name, { id: name });

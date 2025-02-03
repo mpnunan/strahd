@@ -11,7 +11,7 @@ export default function ViewDirectorBasedOnUserAuthStatus({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user, updateUser, userLoading }: AuthContextType = useAuth();
+  const { user, userLoading }: AuthContextType = useAuth();
 
   // if user state is null, then show loader
   if (userLoading) {

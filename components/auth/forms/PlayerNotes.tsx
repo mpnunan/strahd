@@ -1,4 +1,4 @@
-import { useAuth } from "@/utils/context/AuthContext";
+import { AuthContextType, useAuth, User } from "@/utils/context/AuthContext";
 import { createPlayerNote, updatePlayerNote } from "@/utils/data";
 import { PlayerNote } from "@/utils/types";
 import { Button, FormControl, TextField } from "@mui/material";
@@ -21,7 +21,8 @@ export default function NewPlayerNote({
   uid: string | null,
 }) {
   const router = useRouter();
-  const { user } = useAuth();
+  const auth: AuthContextType = useAuth();
+  const user: User = auth.user as User;
   const [playerNote, setPlayerNote] = React.useState<PlayerNote>(initialState);
 
   React.useEffect(() => {
@@ -47,7 +48,7 @@ export default function NewPlayerNote({
     if (id) {
       updatePlayerNote(id, playerNote).then(() => router.push('/'));
     } else {
-      const payload = { ...playerNote, uid: user.uid };
+      const payload = { ...playerNote, uid: user?.uid };
       createPlayerNote(payload).then(({ name }: { name: string }) => {
         const patchPayload = { id: name };
         updatePlayerNote(patchPayload.id, { ...patchPayload, ...payload }).then(() => {

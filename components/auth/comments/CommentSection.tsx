@@ -38,7 +38,7 @@ export default function CommentSection({
           id={comment.id}
           comment={comment.comment}
           uid={comment.uid}
-          playerUid={user.uid}
+          playerUid={user?.uid}
           loadComments={getComments}
         />
       ))}
