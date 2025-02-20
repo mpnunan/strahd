@@ -63,7 +63,7 @@ export default function SingleMapLocation({
             <h2>Map Image Name</h2>
             <img
               className="map-image"
-              src="/assets/placeholder.png"
+              src="/assets/current-map/CurrentMap.jpg"
               alt="Placeholder Image"
             />
           </div>
